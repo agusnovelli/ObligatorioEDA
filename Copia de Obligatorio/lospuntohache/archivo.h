@@ -13,10 +13,10 @@ listaArchivos crear_lista_archivos_vacia();
 bool pertenece_archi_a_lista(listaArchivos arch, Cadena nombreArchivo);
 //retorna true si el nombre pertenece a la lista.
 
-TipoRet insertar_archivo_lista(listaArchivos &lista, Cadena nombreArchivo);
+TipoRet insertar_archivo_lista(listaArchivos &lista, Cadena nombreArchivo, Cadena ext);
 //Inserta un nuevo archivo a la lista de archivos.
 
-TipoRet Borrar_arch_lista(listaArchivos lista, Cadena nombreArchivo);
+TipoRet Borrar_arch_lista(listaArchivos &lista, Cadena nombreArchivo);
 
 void imprimir_archs(listaArchivos archivos);
 //imprime todos los archivos de un directorio.

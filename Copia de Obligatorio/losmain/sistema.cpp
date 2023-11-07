@@ -29,7 +29,7 @@ TipoRet CREARSISTEMA(Sistema &s){
 	s = new(_sistema);
 	Cadena nombre = new char[MAX_NOM_DIR];
 	strcpy(nombre, "RAIZ");
-	s->raiz = crear_directorio(nombre);
+	s->raiz = crear_directorio_raiz(nombre, s->actual);
 	delete [] nombre;
 	s->actual = s->raiz;
 	return OK;
@@ -52,7 +52,8 @@ TipoRet CD (Sistema &s, Cadena nombreDirectorio){
 TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 // Crea un nuevo directorio. 
 // Para mas detalles ver letra.
-	return NO_IMPLEMENTADA;
+	directorio aux = crear_directorio(nombreDirectorio, s->actual);
+	return OK;
 }
 
 TipoRet RMDIR (Sistema &s, Cadena nombreDirectorio){
