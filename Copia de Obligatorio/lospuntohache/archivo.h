@@ -21,4 +21,8 @@ TipoRet Borrar_arch_lista(listaArchivos &lista, Cadena nombreArchivo);
 void imprimir_archs(listaArchivos archivos);
 //imprime todos los archivos de un directorio.
 
+void imprimir_un_arch(listaArchivos lista);
+
+listaArchivos arch_sigiente(listaArchivos lista);
+
 #endif

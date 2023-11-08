@@ -49,10 +49,8 @@ directorio crear_directorio(Cadena nombre, directorio &dirPadre){
 				dirPadre->listaHijos = d;
 			}
 			else{
-				cout << "entro a while\n";
 				while((aux->sig != NULL) and (strcmp (aux->sig->nombre, nombre) < 0))
 					aux = aux->sig;
-				cout << "salgo del while\n";
 				d->sig = aux->sig;
 				aux->sig = d;
 			}
@@ -138,9 +136,51 @@ TipoRet imprimir_dir_actual(directorio d, Cadena parametro){//FALTA EL PARAMETRO
 			}
 		}
 	}
+	else {
+		if(strcasecmp(parametro, "/s") == 0){
+			imprimir_ruta(d);
+			cout << "\n";
+			if((d->archivos == NULL) && (d->listaHijos == NULL))
+				cout << "El directorio esta vacio\n";
+			else{
+				if(d->archivos != NULL){
+					listaArchivos aux = d->archivos;
+					while(aux != NULL){
+						imprimir_ruta(d);
+						cout << "/";
+						imprimir_un_arch(aux);
+						aux = arch_sigiente(aux);
+						cout << "\n";
+					}
+				}
+				if(d->listaHijos != NULL){
+					directorio aux = d->listaHijos;
+					while(aux != NULL){
+						imprimir_ruta(d);
+						cout << "/";
+						imprimir_un_dir(aux);
+						aux = dir_sigiente(aux);
+						cout << "\n";
+					}
+				}
+			}
+		}
+		else
+			cout << "Parametro incorrecto.\n";
+	}
 	return OK;
-
 }
+
+void imprimir_un_dir(directorio d){
+//Imprime el directorio dado.
+	cout << d->nombre;
+}
+
+directorio dir_sigiente(directorio d){
+//Retorna el directorio siguente.
+	return d->sig;
+}
+
 
 bool tiene_padre(directorio d){
 //Retorna true si tiene padre, falsi en cc.

@@ -88,3 +88,12 @@ void imprimir_archs(listaArchivos archivos){
         imprimir_archs(archivos->sig);
     }
 }
+
+void imprimir_un_arch(listaArchivos lista){
+    cout << lista->arch->nombre << "." << lista->arch->extension;
+}
+
+listaArchivos arch_sigiente(listaArchivos lista){
+//Devuelve el archivo siguiente.
+    return lista->sig;
+}

@@ -45,4 +45,11 @@ directorio lista_de_hijos(directorio d);
 directorio buscar_dir(directorio d, Cadena nombreDado);
 //Busca el directorio de nombre "nombreDado" en la lista de hijos "d".
 
+void imprimir_un_dir(directorio d);
+//Imprime el directorio dado.
+
+directorio dir_sigiente(directorio d);
+//Retorna el directorio siguente.
+
+
 #endif
