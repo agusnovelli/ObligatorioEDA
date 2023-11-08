@@ -8,7 +8,7 @@ typedef struct nodo_directorio * directorio;
 // directorio crear_lista_directorios_vacia();
 // //Crea una lista de directorios vacia.
 
-directorio crear_directorio_raiz(Cadena nombre, directorio &dirPadre);
+directorio crear_directorio_raiz(Cadena nombre);
 // Crea un directorio vacio de nombre "raiz".
 
 directorio crear_directorio(Cadena nombre, directorio &d);
@@ -32,5 +32,17 @@ void imprimir_lista_dir(directorio lista);
 
 TipoRet imprimir_dir_actual(directorio d, Cadena parametro);
 //Imprime en pantalla todo el contenido de un directorio.
+
+bool tiene_padre(directorio d);
+//Retorna true si tiene padre, falsi en cc.
+
+directorio dir_padre(directorio d);
+//Retorna el padre de un directorio dado.
+
+directorio lista_de_hijos(directorio d);
+//Retorna la lista de hijos de un directorio dado.
+
+directorio buscar_dir(directorio d, Cadena nombreDado);
+//Busca el directorio de nombre "nombreDado" en la lista de hijos "d".
 
 #endif

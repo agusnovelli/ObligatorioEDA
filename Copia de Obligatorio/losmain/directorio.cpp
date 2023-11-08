@@ -13,17 +13,14 @@ struct nodo_directorio{
 	listaArchivos archivos;
 };
 
-directorio crear_directorio_raiz(Cadena nombre, directorio &dirPadre){
+directorio crear_directorio_raiz(Cadena nombre){
 // Crea un directorio vacio de nombre "nombre".
 	directorio d = new(nodo_directorio);
 	d->nombre = new char[MAX_NOM_DIR];
 	strcpy(d->nombre, nombre);
 	d->listaHijos = NULL;
 	d->archivos = crear_lista_archivos_vacia();
-	if(strcasecmp(nombre, "raiz") != 0){
-		d->padre = dirPadre;
-		dirPadre->listaHijos = d;
-	}
+	d->padre = NULL;
 	return d;
 }
 
@@ -68,7 +65,7 @@ bool pertenece_dir_a_lista_hijos(Cadena nombre, directorio lista){
 	else if(strcmp(lista->nombre, nombre) == 0)
 		return true;
 	else 
-		pertenece_dir_a_lista_hijos(nombre, lista->sig);
+		return pertenece_dir_a_lista_hijos(nombre, lista->sig);
 }
 
 TipoRet ins_arch_dir(directorio &d, Cadena nombreArchivo){
@@ -103,7 +100,6 @@ void imprimir_ruta(directorio d){
 		imprimir_ruta(d->padre);
 		cout << "/" << d->nombre;
 	}
-	cout << "\n";
 }
 
 void imprimir_lista_dir(directorio lista){
@@ -120,6 +116,7 @@ TipoRet imprimir_dir_actual(directorio d, Cadena parametro){//FALTA EL PARAMETRO
 //Imprime en pantalla todo el contenido de un directorio.
 	if (parametro == NULL){
 		imprimir_ruta(d);
+		cout << "\n";
 		if((d->archivos == NULL) && (d->listaHijos == NULL))
 			cout << "El directorio esta vacio\n";
 		else{
@@ -131,8 +128,35 @@ TipoRet imprimir_dir_actual(directorio d, Cadena parametro){//FALTA EL PARAMETRO
 		}
 	}
 	return OK;
+
 }
 
+bool tiene_padre(directorio d){
+//Retorna true si tiene padre, falsi en cc.
+	if(d->padre != NULL)
+		return true;
+	else
+		return false;
+}
 
+directorio dir_padre(directorio d){
+//Retorna el padre de un directorio dado.
+	return d->padre;
+}
 
+directorio lista_de_hijos(directorio d){
+//Retorna la lista de hijos de un directorio dado.
+	return d->listaHijos;
+}
 
+directorio buscar_dir(directorio d, Cadena nombreDado){
+//Busca el directorio de nombre "nombreDado" en la lista de hijos "d".
+	if(d == NULL){
+		return NULL;
+	}
+	else if(strcasecmp(d->nombre, nombreDado) == 0){
+		return d;
+	}
+	else
+		return buscar_dir(d->sig, nombreDado);
+}

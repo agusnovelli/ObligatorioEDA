@@ -29,7 +29,7 @@ TipoRet CREARSISTEMA(Sistema &s){
 	s = new(_sistema);
 	Cadena nombre = new char[MAX_NOM_DIR];
 	strcpy(nombre, "RAIZ");
-	s->raiz = crear_directorio_raiz(nombre, s->actual);
+	s->raiz = crear_directorio_raiz(nombre);
 	delete [] nombre;
 	s->actual = s->raiz;
 	return OK;
@@ -46,7 +46,27 @@ TipoRet DESTRUIRSISTEMA(Sistema &s){
 TipoRet CD (Sistema &s, Cadena nombreDirectorio){
 // Cambia directorio. 
 // Para mas detalles ver letra.
-	return NO_IMPLEMENTADA;
+	if(strcasecmp(nombreDirectorio, "Raiz") == 0){
+		s->actual = s->raiz;
+	}
+	else if(strcasecmp(nombreDirectorio, "..") == 0){
+		if(tiene_padre(s->actual) == true){
+			s->actual= dir_padre(s->actual);
+		}
+		else{
+			cout << "Este directorio no tiene padre.\n";
+		}
+	}
+	else{
+		directorio aux = buscar_dir(lista_de_hijos(s->actual), nombreDirectorio);
+		if(aux != NULL){
+			s->actual = aux;
+		}
+		else{
+			cout << nombreDirectorio << " no existe.\n";
+		}
+	}
+	return OK;
 }
 	
 TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
