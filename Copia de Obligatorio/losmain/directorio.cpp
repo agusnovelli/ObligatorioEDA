@@ -37,14 +37,25 @@ directorio crear_directorio(Cadena nombre, directorio &dirPadre){
 		d->padre = dirPadre;
 		d->listaHijos = NULL;
 		d->archivos = crear_lista_archivos_vacia();
-		if(dirPadre->listaHijos == NULL){
+		if(dirPadre->listaHijos == NULL){//Es el primero
 			d->sig = NULL;
 			dirPadre->listaHijos = d;
 			return d;
 		}
 		else{
-			d->sig = dirPadre->listaHijos;
-			dirPadre->listaHijos = d;
+			directorio aux = dirPadre->listaHijos;
+			if(strcmp (aux->nombre, nombre) > 0){//Comparo con el primero
+				d->sig = dirPadre->listaHijos;
+				dirPadre->listaHijos = d;
+			}
+			else{
+				cout << "entro a while\n";
+				while((aux->sig != NULL) and (strcmp (aux->sig->nombre, nombre) < 0))
+					aux = aux->sig;
+				cout << "salgo del while\n";
+				d->sig = aux->sig;
+				aux->sig = d;
+			}
 			return d;
 		}
 
