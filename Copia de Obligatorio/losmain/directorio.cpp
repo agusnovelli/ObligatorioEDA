@@ -200,14 +200,39 @@ directorio lista_de_hijos(directorio d){
 	return d->listaHijos;
 }
 
-directorio buscar_dir(directorio d, Cadena nombreDado){
-//Busca el directorio de nombre "nombreDado" en la lista de hijos "d".
+directorio buscar_dir(directorio d, Cadena nombre){
+//Busca el directorio de nombre "nombreDado" en la lista de hijos "d" y lo retorna.
 	if(d == NULL){
+		cout << "No existe el directorio" << nombre;
 		return NULL;
 	}
-	else if(strcasecmp(d->nombre, nombreDado) == 0){
+	else if(strcasecmp(d->nombre, nombre) == 0){
 		return d;
 	}
 	else
-		return buscar_dir(d->sig, nombreDado);
+		return buscar_dir(d->sig, nombre);
+}
+
+TipoRet eliminar_dir(directorio actual, Cadena nombreDirectorio){
+//Elimina el directorio de nombre "nombreDirectorio".
+	if(actual->listaHijos == NULL){
+		return ERROR;
+	}
+	else{
+		directorio aux = buscar_dir(actual->listaHijos, nombreDirectorio);
+		if(aux != NULL){
+			if(aux == actual->listaHijos){
+				actual->listaHijos = aux->sig;
+				delete aux;
+			}
+			else{
+				directorio aux2 = actual->listaHijos;
+				while(aux2->sig != aux)
+					aux2 = aux2->sig;
+				aux2->sig = aux->sig;
+				delete aux;
+			}
+		}
+		return OK;
+	}
 }

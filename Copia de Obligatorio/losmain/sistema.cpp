@@ -79,7 +79,7 @@ TipoRet MKDIR (Sistema &s, Cadena nombreDirectorio){
 TipoRet RMDIR (Sistema &s, Cadena nombreDirectorio){
 // Elimina un directorio.
 // Para mas detalles ver letra.
-	return NO_IMPLEMENTADA;
+	return eliminar_dir(s->actual, nombreDirectorio);
 }
 
 TipoRet MOVE (Sistema &s, Cadena nombre, Cadena directorioDestino){

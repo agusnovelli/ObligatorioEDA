@@ -43,13 +43,16 @@ directorio lista_de_hijos(directorio d);
 //Retorna la lista de hijos de un directorio dado.
 
 directorio buscar_dir(directorio d, Cadena nombreDado);
-//Busca el directorio de nombre "nombreDado" en la lista de hijos "d".
+//Busca el directorio de nombre "nombreDado" en la lista de hijos "d" y lo retorna.
 
 void imprimir_un_dir(directorio d);
 //Imprime el directorio dado.
 
 directorio dir_sigiente(directorio d);
 //Retorna el directorio siguente.
+
+TipoRet eliminar_dir(directorio actual, Cadena nombreDirectorio);
+//Elimina el directorio de nombre "nombreDirectorio".
 
 
 #endif
