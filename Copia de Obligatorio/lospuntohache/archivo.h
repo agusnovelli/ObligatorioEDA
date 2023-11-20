@@ -25,4 +25,13 @@ void imprimir_un_arch(listaArchivos lista);
 
 listaArchivos arch_sigiente(listaArchivos lista);
 
+TipoRet insertar_Al_principio_deCont(listaArchivos l, Cadena nombreArchivo, Cadena texto);
+//inserta contenido al principio
+
+TipoRet insertar_Al_final_deCont(listaArchivos l, Cadena nombreArchivo, Cadena texto);
+
+TipoRet Imprimir_cont_delArch(listaArchivos l, Cadena nombreArchivo);
+
+TipoRet Cambia_permisos(listaArchivos l, Cadena nombreArchivo, Cadena parametro);
+
 #endif

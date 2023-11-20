@@ -97,3 +97,56 @@ listaArchivos arch_sigiente(listaArchivos lista){
 //Devuelve el archivo siguiente.
     return lista->sig;
 }
+
+TipoRet insertar_Al_principio_deCont(listaArchivos l, Cadena nombreArchivo, Cadena texto){
+
+        insertar_Al_principio(nombreArchivo,l->arch->cont, texto);
+        return OK;
+}
+
+TipoRet insertar_Al_final_deCont(listaArchivos l, Cadena nombreArchivo, Cadena texto){
+    
+        insertar_Al_final(nombreArchivo,l->arch->cont, texto);
+        return OK;
+}
+
+TipoRet Imprimir_cont_delArch(listaArchivos l, Cadena nombreArchivo) {
+//Pre: el archivo pertenece a la lista. 
+
+    if (l->arch->cont!= NULL) {
+        cout<<"entre al if \n";
+        if (strcmp(l->arch->nombre, nombreArchivo) == 0) {
+            cout<<"compare el nombre \n";
+            // Encontramos el archivo, imprimir su contenido
+            Imprimir_cont(l->arch->cont);
+            return OK;
+        } 
+        else{
+            cout << "El archivo " << nombreArchivo << " no se encuentra en la lista.";
+            return ERROR;
+        }
+
+        l = l->sig;
+    }
+    return OK;
+}
+
+TipoRet Cambia_permisos(listaArchivos l, Cadena nombreArchivo, Cadena parametro) {
+    // Cambia los permisos del archivo según el parámetro
+    if (pertenece_archi_a_lista(l, nombreArchivo)) {
+        if (strcasecmp(parametro, "+W") == 0) {
+            l->arch->escritura = true;
+            cout << "Lectura/Escritura";
+        } else if (strcasecmp(parametro, "-W") == 0) {
+            l->arch->escritura = false;
+            cout << "Lectura";
+        } else {
+            cout << "Parámetro Incorrecto";
+            return ERROR;
+        }
+        return OK;
+    } else {
+        cout << "No existe el archivo en la lista";
+        return ERROR;
+    }
+}

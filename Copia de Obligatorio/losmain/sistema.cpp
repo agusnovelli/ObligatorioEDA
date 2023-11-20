@@ -82,9 +82,10 @@ TipoRet RMDIR (Sistema &s, Cadena nombreDirectorio){
 	return eliminar_dir(s->actual, nombreDirectorio);
 }
 
-TipoRet MOVE (Sistema &s, Cadena nombre, Cadena directorioDestino){
+TipoRet MOVE (Sistema &s, Cadena nombre, Cadena directorioDestino/*, directorio raiz*/){
 // mueve un directorio o archivo desde su directorio origen hacia un nuevo directorio destino.
 // Para mas detalles ver letra.
+	// return mover_dir_o_arch(s->actual, nombre, directorioDestino, raiz);
 	return NO_IMPLEMENTADA;
 }
 
@@ -115,13 +116,13 @@ TipoRet ATTRIB (Sistema &s, Cadena nombreArchivo, Cadena parametro){
 TipoRet IC (Sistema &s, Cadena nombreArchivo, Cadena texto){
 // Agrega un texto al final del archivo NombreArchivo.
 // Para mas detalles ver letra.
-	return NO_IMPLEMENTADA;
+	return ins_cont_princ(s->actual, nombreArchivo, texto);
 }
 
 TipoRet IF (Sistema &s, Cadena nombreArchivo, Cadena texto){
 // Agrega un texto al final del archivo NombreArchivo.
 // Para mas detalles ver letra.
-	return NO_IMPLEMENTADA;
+	return ins_cont_fin(s->actual,nombreArchivo,texto);
 }
 
 TipoRet DC (Sistema &s, Cadena nombreArchivo, int k){

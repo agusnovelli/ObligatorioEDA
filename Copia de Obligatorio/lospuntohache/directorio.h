@@ -54,5 +54,16 @@ directorio dir_sigiente(directorio d);
 TipoRet eliminar_dir(directorio actual, Cadena nombreDirectorio);
 //Elimina el directorio de nombre "nombreDirectorio".
 
+TipoRet ins_cont_princ(directorio d, Cadena nombreArchivo, Cadena texto);
+//inserta contenido al archivo del directorio actual;
+
+TipoRet ins_cont_fin(directorio d, Cadena nombreArchivo, Cadena texto);
+// Inserta texto al contenido del archivo de la lista del directorio actual.
+
+// TipoRet mover_dir_o_arch(directorio actual, Cadena nombre, Cadena directorioDestino, directorio raiz);
+
+// void mover_dir(directorio d, Cadena nombre, Cadena directorioDestino, directorio raiz);
+
+// directorio dir_destino(directorio raiz, Cadena nombre);
 
 #endif

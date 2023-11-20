@@ -9,7 +9,6 @@
 #include "./lospuntohache/sistema.h"
 #include "./lospuntohache/directorio.h"
 #include "./lospuntohache/contenido.h"
-#include "./lospuntohache/texto.h"
 #include <string.h>
 #include <iostream>
 

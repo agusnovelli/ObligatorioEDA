@@ -33,7 +33,7 @@ TipoRet RMDIR (Sistema &s, Cadena nombreDirectorio);
 // Elimina un directorio.
 // Para mas detalles ver letra.
 
-TipoRet MOVE (Sistema &s, Cadena nombre, Cadena directorioDestino);
+TipoRet MOVE (Sistema &s, Cadena nombre, Cadena directorioDestino/*, directorio raiz*/);
 // mueve un directorio o archivo desde su directorio origen hacia un nuevo directorio destino.
 // Para mas detalles ver letra.
 

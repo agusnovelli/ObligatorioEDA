@@ -236,3 +236,71 @@ TipoRet eliminar_dir(directorio actual, Cadena nombreDirectorio){
 		return OK;
 	}
 }
+
+TipoRet ins_cont_princ(directorio d, Cadena nombreArchivo, Cadena texto) {
+// Inserta texto al contenido del archivo de la lista del directorio actual.
+    Cadena nombre = strtok(nombreArchivo, ".");
+    if (pertenece_archi_a_lista(d->archivos, nombre)) {
+        cout << "el archivo pertenece a la lista\n";
+        insertar_Al_principio_deCont(d->archivos, nombreArchivo, texto);
+        return OK;
+    } else {
+        cout << "cagaste\n";
+        return ERROR;
+    }
+}
+
+TipoRet ins_cont_fin(directorio d, Cadena nombreArchivo, Cadena texto) {
+// Inserta texto al contenido del archivo de la lista del directorio actual.
+    Cadena nombre = strtok(nombreArchivo, ".");
+    cout << "todavía no entré al if\n";
+
+    if (pertenece_archi_a_lista(d->archivos, nombre)) {
+        cout << "el archivo pertenece a la lista\n";
+        insertar_Al_final_deCont(d->archivos, nombre, texto);
+        return OK;
+    } else {
+        cout << "cagaste\n";
+        return ERROR;
+    }
+}
+
+TipoRet Imprimir_Cont_ArchActual(directorio d, Cadena nombreArchivo){
+//Imprime el contenido del archivo del directorio actual.
+	if(pertenece_archi_a_lista(d->archivos, nombreArchivo)){
+		cout<<"el archivo pertenece a la lista \n";
+		Imprimir_cont_delArch(d->archivos, nombreArchivo);
+		return OK;
+	}else if(!pertenece_archi_a_lista(d->archivos,nombreArchivo)){
+		cout<<"No existe un archivo con ese nombre en el directorio actual";
+		return ERROR;
+	}
+}
+
+
+TipoRet Cambia_permisos_Arch_de_Dir(directorio d, Cadena nombreArchivo, Cadena parametro){
+	Cambia_permisos(d->archivos, nombreArchivo, parametro);
+	return OK;
+}
+
+// TipoRet mover_dir_o_arch(directorio actual, Cadena nombre, Cadena directorioDestino, directorio raiz){
+// 	Cadena nombre2 = strtok(nombre, ".");
+// 	Cadena ext = strtok(NULL, ".");
+// 	if (ext == NULL){
+// 		mover_dir(actual, nombre, directorioDestino, raiz);
+// 		return OK;
+// 	}
+// 	else{
+// 		cout << "Es un archivo.\n";
+// 		return OK;
+// 	}
+// }
+
+// void mover_dir(directorio d, Cadena nombre, Cadena directorioDestino, directorio raiz){
+// 	directorio dirAux = buscar_dir(d, nombre);
+// 	directorio destino = dir_destino(raiz, nombre);
+// }
+
+// directorio dir_destino(directorio padre, Cadena nombre){
+// 	if(padre->listaHijos == NULL)
+// }
